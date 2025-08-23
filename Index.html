@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - พรรณธรรม อ้วนพรมมา</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        .resume-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.3)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.3)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.3)"/></svg>');
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .resume-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #ff6b9d;
+            text-shadow: 3px 3px 0px rgba(255,255,255,0.8);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .resume-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b9d, #ffd93d, #6bcf7f);
+            border-radius: 2px;
+        }
+        
+        .profile-section {
+            display: flex;
+            gap: 30px;
+            padding: 30px;
+            background: white;
+        }
+        
+        .profile-picture {
+            flex-shrink: 0;
+            width: 200px;
+            height: 250px;
+            background: linear-gradient(135deg, #ffb3d9, #ffd6e7);
+            border-radius: 20px;
+            border: 4px solid #ff9a9e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-picture::before {
+            content: '👨';
+            font-size: 4rem;
+            color: #ff6b9d;
+        }
+        
+        .profile-picture::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            background: #ffd93d;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+        
+        .profile-info {
+            flex: 1;
+        }
+        
+        .name {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #4a4a4a;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .name::before {
+            content: '📎';
+            position: absolute;
+            left: -40px;
+            top: 0;
+            font-size: 1.5rem;
+        }
+        
+        .name::after {
+            content: '✨';
+            position: absolute;
+            right: -40px;
+            top: 0;
+            font-size: 1.5rem;
+        }
+        
+        .about-me {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 2px solid #ffd93d;
+            position: relative;
+        }
+        
+        .about-me::before {
+            content: '💭';
+            position: absolute;
+            left: -15px;
+            top: -15px;
+            font-size: 2rem;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #6c5ce7;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .about-text {
+            color: #4a4a4a;
+            line-height: 1.6;
+            text-align: center;
+        }
+        
+        .contact-info {
+            background: linear-gradient(135deg, #dda0dd, #e6e6fa);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #c8a2c8;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #4a4a4a;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            width: 30px;
+            text-align: center;
+        }
+        
+        .personal-info-banner {
+            background: linear-gradient(135deg, #ffb3d9, #ffd6e7);
+            margin: 30px;
+            padding: 25px;
+            border-radius: 20px;
+            border: 3px solid white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .personal-info-banner::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background: #ff9a9e;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+        
+        .personal-info-banner::after {
+            content: '';
+            position: absolute;
+            top: 50px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background: #ff9a9e;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+        
+        .banner-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #6c5ce7;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .info-item {
+            display: flex;
+            gap: 10px;
+            color: #4a4a4a;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #6c5ce7;
+            min-width: 120px;
+        }
+        
+        .bottom-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 0 30px 30px;
+        }
+        
+        .section-box {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            padding: 25px;
+            border-radius: 20px;
+            border: 3px solid white;
+            position: relative;
+        }
+        
+        .section-box::before,
+        .section-box::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff9a9e;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+        
+        .section-box::before {
+            top: 10px;
+            left: 10px;
+        }
+        
+        .section-box::after {
+            top: 10px;
+            right: 10px;
+        }
+        
+        .section-box:nth-child(2)::before,
+        .section-box:nth-child(2)::after {
+            top: auto;
+            bottom: 10px;
+        }
+        
+        .section-box:nth-child(2)::before {
+            left: 10px;
+        }
+        
+        .section-box:nth-child(2)::after {
+            right: 10px;
+        }
+        
+        .box-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #6c5ce7;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .education-item,
+        .award-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 10px;
+            border-left: 4px solid #ff9a9e;
+        }
+        
+        .year {
+            font-weight: 600;
+            color: #ff6b9d;
+            margin-bottom: 5px;
+        }
+        
+        .detail {
+            color: #4a4a4a;
+            margin-bottom: 3px;
+        }
+        
+        .motto-hobbies {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 0 30px 30px;
+        }
+        
+        .motto-box,
+        .hobbies-box {
+            background: linear-gradient(135deg, #b8e6b8, #d4edda);
+            padding: 25px;
+            border-radius: 20px;
+            border: 3px solid white;
+            position: relative;
+        }
+        
+        .motto-box::before,
+        .hobbies-box::before {
+            content: '📎';
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+        }
+        
+        .motto-text {
+            font-style: italic;
+            color: #4a4a4a;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+        
+        .hobbies-text {
+            color: #4a4a4a;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+        
+        .decorative-elements {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .star-decoration {
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            font-size: 1.5rem;
+            animation: rotate 3s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-picture {
+                width: 150px;
+                height: 180px;
+                margin: 0 auto;
+            }
+            
+            .bottom-sections,
+            .motto-hobbies {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .resume-title {
+                font-size: 2.5rem;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="header">
+            <div class="decorative-elements">⭐</div>
+            <div class="star-decoration">🌟</div>
+            <h1 class="resume-title">RESUME</h1>
+        </div>
+        
+        <div class="profile-section">
+            <div class="profile-picture"></div>
+            <div class="profile-info">
+                <h2 class="name">พรรณธรรม อ้วนพรมมา</h2>
+                
+                <div class="about-me">
+                    <h3 class="section-title">เกี่ยวกับฉัน</h3>
+                    <p class="about-text">ฉันเป็นคนมีโลกของตัวเองสูง และถ้าใจทําอะไร... ทําอย่างตั้งใจและสุดความสามารถ เป็นคนพูดน้อย แต่ลงมือทํา มีเป้าหมายที่แน่วแน่ชัดเจน</p>
+                </div>
+                
+                <div class="contact-info">
+                    <h3 class="section-title">ช่องทางติดต่อ</h3>
+                    <div class="contact-item">
+                        <span class="contact-icon">✉️</span>
+                        <span>kengzybag11@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">💖</span>
+                        <span>IG.Muntjac</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <span>080-259-0974</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="personal-info-banner">
+            <h3 class="banner-title">ข้อมูลส่วนตัว</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">ชื่อ :</span>
+                    <span>พรรณธรรม อ้วนพรมมา</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">ชื่อเล่น :</span>
+                    <span>เก้ง</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">อายุ :</span>
+                    <span>19 ปี</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">วันเกิด :</span>
+                    <span>19 ธันวาคม 2005</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">เชื้อชาติ/ศาสนา :</span>
+                    <span>ไทย / พุทธ</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">โรงเรียน :</span>
+                    <span>วิทยาลัยเทคนิคขอนแก่น</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bottom-sections">
+            <div class="section-box">
+                <h3 class="box-title">การศึกษา</h3>
+                <div class="education-item">
+                    <div class="year">ปี 2023</div>
+                    <div class="detail">เกรด 2.97</div>
+                    <div class="detail">โรงเรียนบ วิทยาลัยเทคโนโลยีคุวานันท์</div>
+                </div>
+                <div class="education-item">
+                    <div class="year">ปี 2021</div>
+                    <div class="detail">เกรด 3.17</div>
+                    <div class="detail">โรงเรียน สาวะถีพิทยาสรรพ์</div>
+                </div>
+            </div>
+            
+            <div class="section-box">
+                <h3 class="box-title">รางวัลที่ได้รับ</h3>
+                <div class="award-item">
+                    <div class="year">ปี 2019</div>
+                    <div class="detail">รองชนะเลิศอันดับที่2</div>
+                    <div class="detail">ประกวดตอบคำถามคณิตศาสตร์</div>
+                </div>
+                <div class="award-item">
+                    <div class="year">ปี 2023</div>
+                    <div class="detail">ชนะเลิศ</div>
+                    <div class="detail">การแข่งขันฟุตบอลในโรงเรียน</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="motto-hobbies">
+            <div class="motto-box">
+                <h3 class="box-title">คติประจำใจ</h3>
+                <p class="motto-text">"เราจะเติบโต จากจุดเริ่มต้นของเรา"</p>
+            </div>
+            
+            <div class="hobbies-box">
+                <h3 class="box-title">งานอดิเรก</h3>
+                <p class="hobbies-text">ดูการ์ตูน / เล่นเกม / เล่นกีฬา</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
